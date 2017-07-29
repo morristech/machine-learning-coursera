@@ -51,4 +51,4 @@ A = magic(9);
 %A .* eye(9) % multiplies each element per the identity matrix leaving 1 val per row/col
 
 temp = pinv(A);      % inverse of A 
-round(temp * A)
+round(temp * A)      % back to the identity matrix
