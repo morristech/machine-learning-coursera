@@ -86,10 +86,31 @@ theta2_sum = sum(Theta2(1:end, 2:end)(:) .^ 2);
 
 J = J + lambda / (2 * m) * (theta1_sum + theta2_sum);
 
+tridelta_1 = 0;
+tridelta_2 = 0;
 
+for t = 1:m
+  % Step 1
+  a_1 = [1; X(t, :)'];
+  z_2 = Theta1 * a_1;
+  a_2 = [1; sigmoid(z_2)];
+  z_3 = Theta2 * a_2;
+  a_3 = sigmoid(z_3);
+  % Step 2
+  delta_3 = a_3 - y_eye(t, :)';
+  % Step 3
+  delta_2 = (Theta2(:, 2:end)' * delta_3) .* sigmoidGradient(z_2);
+  % Step 4
+  tridelta_1 = tridelta_1 + delta_2 * a_1';
+  tridelta_2 = tridelta_2 + delta_3 * a_2';
+ 
+endfor
 
+Theta1_grad = (1/m) .* tridelta_1;
+Theta2_grad = (1/m) .* tridelta_2;
 
-
+Theta1_grad(:, 2:end) += (lambda / m) * Theta1(:, 2:end);
+Theta2_grad(:, 2:end) += (lambda / m) * Theta2(:, 2:end);
 
 
 
