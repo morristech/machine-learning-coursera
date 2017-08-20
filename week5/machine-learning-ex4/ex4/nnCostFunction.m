@@ -81,10 +81,10 @@ endfor
 
 J = 1 / m * theSum;
 
-theta1_sum = sum(Theta1(1:end, 2:end)(:) .^ 2)
-theta2_sum = sum(Theta2(1:end, 2:end)(:) .^ 2)
+theta1_sum = sum(Theta1(1:end, 2:end)(:) .^ 2);
+theta2_sum = sum(Theta2(1:end, 2:end)(:) .^ 2);
 
-J = J + lambda / (2 * m) * (theta1_sum + theta2_sum)
+J = J + lambda / (2 * m) * (theta1_sum + theta2_sum);
 
 
 
