@@ -70,8 +70,8 @@ h2 = sigmoid([ones(m, 1) h1] * Theta2');
 
 theSum = 0;
 
-should_be_1 = y_eye(1, 10) % should be 1
-should_be_1 = h2(1, 10) % should be 1
+% should_be_1 = y_eye(1, 10) % should be 1
+% should_be_1 = h2(1, 10) % should be 1
 
 for k = 1:num_labels
   for i = 1:m
@@ -79,7 +79,7 @@ for k = 1:num_labels
   endfor
 endfor
 
-J = 1 / m * theSum
+J = 1 / m * theSum;
 
 
 
